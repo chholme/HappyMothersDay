@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const headers = document.querySelectorAll("h1");
+  const header1 = document.querySelector(".mother");
 
   window.addEventListener("scroll", function () {
     const scrollPosition = window.scrollY;
@@ -19,6 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
         fixedHeader.style.zIndex = "1000"; // Adjust z-index if needed
       } else {
         fixedHeader.style.position = "static";
+      }
+
+      if (scrollPosition >= header1.offsetTop) {
+        fixedHeader.style.visibility = "hidden";
+        header1.style.visibility = "visible";
+      } else {
+        fixedHeader.style.visibility = "visible";
       }
     });
   });
