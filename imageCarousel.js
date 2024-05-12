@@ -1,36 +1,29 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const slides = document.querySelectorAll(".slider-item");
-  let currentSlide = 0;
-  let slideInterval;
+const slides = document.querySelectorAll(".slide");
+let currentSlideIndex = 0;
 
-  function showSlide(n) {
-    slides[currentSlide].classList.remove("current");
-    currentSlide = (n + slides.length) % slides.length;
-    slides[currentSlide].classList.add("current");
+function showSlide(index) {
+  slides.forEach((slide) => (slide.style.display = "none"));
+  slides[index].style.display = "block";
+}
+
+function prevSlide() {
+  currentSlideIndex--;
+  if (currentSlideIndex < 0) {
+    currentSlideIndex = slides.length - 1;
   }
+  showSlide(currentSlideIndex);
+}
 
-  function nextSlide() {
-    showSlide(currentSlide + 1);
+function nextSlide() {
+  currentSlideIndex++;
+  if (currentSlideIndex >= slides.length) {
+    currentSlideIndex = 0;
   }
+  showSlide(currentSlideIndex);
+}
 
-  function startSlideInterval() {
-    slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-  }
+document.getElementById("prevBtn").addEventListener("click", prevSlide);
+document.getElementById("nextBtn").addEventListener("click", nextSlide);
 
-  function stopSlideInterval() {
-    clearInterval(slideInterval);
-  }
-
-  startSlideInterval(); // Start automatic sliding
-
-  // Pause automatic sliding when hovering over the slider container
-  const sliderContainer = document.querySelector(".slider-container");
-  sliderContainer.addEventListener("mouseenter", () => {
-    stopSlideInterval();
-  });
-
-  // Resume automatic sliding when mouse leaves the slider container
-  sliderContainer.addEventListener("mouseleave", () => {
-    startSlideInterval();
-  });
-});
+// Show the first slide initially
+showSlide(currentSlideIndex);

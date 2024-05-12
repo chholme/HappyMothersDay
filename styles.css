@@ -10,6 +10,7 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding-left: 1em;
+  padding-right: 1em;
   height: 100%;
 }
 
@@ -39,7 +40,7 @@ header {
 
 /* Add styles for the h1 elements within fixed headers */
 .fixed-header h1 {
-  color: #333; /* Adjust text color as needed */
+  color: #33333367; /* Adjust text color as needed */
   margin: 0;
   /* Add padding for spacing */
 }
@@ -48,6 +49,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .nav-name {
@@ -76,25 +78,15 @@ section {
   min-height: 100vh; /* Ensure sections fill viewport height */
 }
 
-#rhea {
-  background-color: white;
-}
-
-#daughter {
-  background-color: #e9fafd;
-}
-
-#sister {
-  background-color: #fef3f3;
-}
-
 img {
-  max-width: 300px; /* Adjust width as needed */
-  object-fit: cover;
+  width: auto; /* Ensure images have a fluid width */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 50%; /* Limit maximum width to prevent stretching */
+  max-height: 50%; /* Limit maximum height to prevent stretching */
 }
 
 h1 {
-  color: black;
+  color: rgba(0, 0, 0, 0.532);
   text-align: center;
   font-size: 70px;
 }
@@ -129,6 +121,11 @@ p {
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   margin-top: 55px;
+  color: black;
+}
+
+.first {
+  color: #b1adad;
 }
 
 footer {
@@ -137,25 +134,29 @@ footer {
   text-align: center;
 }
 
-.slider-container {
-  overflow: hidden;
-  position: relative;
-  max-width: 100%; /* Ensure the carousel fits within its container */
-}
-
 .slider-item img {
-  max-width: 100%; /* Ensure the image fits within its container */
-  height: auto; /* Maintain aspect ratio */
-  display: block; /* Remove any extra spacing below the image */
-  margin: 0 auto; /* Center the image horizontally */
+  width: 100%;
+  height: auto;
 }
 
-.slider-item {
-  display: none;
-  transition: opacity 0.5s ease-in-out; /* Add smooth transition effect */
+.highway-car img {
+  width: 180px; /* Adjust width as needed */
+  height: 100%; /* Images fill container height */
+  object-fit: cover;
 }
 
-.slider-item.current {
-  display: block;
-  opacity: 1; /* Ensure the current slide is fully visible */
+/* Assuming total image width is 720px (adjust as needed) */
+@keyframes translatestf {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-720px);
+  }
+}
+
+@keyframes translateinfinite {
+  100% {
+    transform: translateX(calc(-180px * 2));
+  }
 }
